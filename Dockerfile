@@ -25,5 +25,4 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get autoclean
 #RUN chmod 755 /initiate.sh /etc/apache2/foreground.sh
 EXPOSE 80
 #CMD ["/bin/bash", "/initiate.sh"]
-
-RUN apache2
+#RUN apache2
