@@ -1,11 +1,13 @@
 FROM ubuntu:12.04
 
-RUN apt-get update
+MAINTAINER Mark C version: 0.1
 
-RUN dpkg-divert --local --rename --add /sbin/initctl
-RUN ln -sf /bin/true /sbin/initctl  
+RUN apt-get update && apt-get install -y apache2 && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git mysql-client mysql-server apache2 libapache2-mod-php5 pwgen python-setuptools vim-tiny php5-mysql php-apc php5-gd php5-curl php5-memcache memcached drush mc
-RUN DEBIAN_FRONTEND=noninteractive apt-get autoclean
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV APACHE_LOG_DIR /var/log/apache2
 
 EXPOSE 80
+
+CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
