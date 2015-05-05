@@ -5,7 +5,7 @@ RUN apt-get update
 RUN apt-get upgrade
 
 #apt-get install apache2
-RUN apt-get -y install lamp-server^
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install lamp-server^
 
 #RUN dpkg-divert --local --rename --add /sbin/initctl
 #RUN ln -sf /bin/true /sbin/initctl  
