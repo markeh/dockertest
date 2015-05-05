@@ -1,8 +1,8 @@
 #FROM ubuntu:12.04
 FROM ubuntu:latest
 
-RUN apt-get update
-RUN apt-get upgrade
+RUN apt-get -y update
+RUN apt-get -y upgrade
 
 #apt-get install apache2
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install lamp-server^
